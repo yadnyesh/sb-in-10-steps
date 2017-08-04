@@ -1,6 +1,7 @@
 package com.example.demo;
 
 public class Book {
+	
 	long id;
 	String name;
 	String author;
@@ -35,6 +36,9 @@ public class Book {
 		this.author = author;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", name=" + name + ", author=" + author + "]";
+	}
 	
 }
