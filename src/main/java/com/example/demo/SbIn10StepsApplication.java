@@ -12,9 +12,5 @@ public class SbIn10StepsApplication {
 		ConfigurableApplicationContext applicationContext = 
 				SpringApplication.run(SbIn10StepsApplication.class, args);
 		
-		for (String name : applicationContext.getBeanDefinitionNames()) {
-			System.out.println(name);
-		}
-		
 	}
 }
