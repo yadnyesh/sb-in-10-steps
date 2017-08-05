@@ -1,12 +1,30 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-
 <head>
-<title>First Web Application</title>
+<title>Todo's for ${name}</title>
 </head>
 
 <body>
-	Here are the list of ${name}'s todos:
-	${todos}.
+	<h1>Your Todo's</h1>
+	<table>
+		<caption>Your current Todo's are</caption>
+		<thead>
+			<tr>
+				<th>Description</th>
+				<th>Target Data</th>
+				<th>Is it Done?</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items = "${todos}" var="todo">			
+				<tr>
+					<td>${todo.desc}</td>
+					<td>${todo.targetDate}</td>
+					<td>${todo.done}</td>
+				</tr>
+			</c:forEach>		
+		</tbody>
+	</table>
 	<BR/>
 	<a href="/add-todo">Add a Todo</a> 
 </body>
