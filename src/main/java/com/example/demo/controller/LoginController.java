@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 	
 	@RequestMapping("/login")
-	public String loginMessage(@RequestParam String name, ModelMap model) {
-		model.put("name", name);
+	public String loginMessage(ModelMap model) {
+		//model.put("name", name);
 		return "login";
 	}
 
