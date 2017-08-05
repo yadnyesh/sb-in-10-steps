@@ -9,8 +9,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class SbIn10StepsApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext applicationContext = 
 				SpringApplication.run(SbIn10StepsApplication.class, args);
-		
 	}
 }
