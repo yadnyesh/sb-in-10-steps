@@ -30,6 +30,7 @@ public class LoginController {
 			return "welcome";
 		}
 		else
+			model.put("errorMessage", "Invalid userid and password combination");
 			return "login";	
 	}
 
