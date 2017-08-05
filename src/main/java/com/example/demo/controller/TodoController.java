@@ -18,10 +18,15 @@ public class TodoController {
 	TodoService todoService;
 	
 	@RequestMapping(value = "/list-todos", method = RequestMethod.GET)
-	public String listTodos(ModelMap model) {
+	public String showTodo(ModelMap model) {
 		String name = (String) model.get("name");
 		model.put("todos", todoService.retrieveTodos(name));
 		return "list-todos";
+	}
+	
+	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
+	public String addTodo(ModelMap model) {
+		return "add-todo";
 	}
 
 }
