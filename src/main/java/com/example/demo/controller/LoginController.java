@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginMessageGet(ModelMap model) {
+	public String showLoginPage(ModelMap model) {
 		//model.put("name", name);
 		return "login";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginMessagePost(ModelMap model) {
+	public String showWelcomePage(ModelMap model) {
 		//model.put("name", name);
 		return "login";
 	}
