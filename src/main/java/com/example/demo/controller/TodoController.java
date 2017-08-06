@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -36,14 +38,22 @@ public class TodoController {
 	
 	@RequestMapping(value = "/list-todo", method = RequestMethod.GET)
 	public String showTodo(ModelMap model) {
-		String name = (String) model.get("name");
+		String name = getLoggedInUserName(model);
 		model.put("todos", todoService.retrieveTodos(name));
 		return "list-todo";
+	}
+
+	private String getLoggedInUserName(ModelMap model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(principal instanceof UserDetails) {
+			return ((UserDetails) principal).getUsername();
+		}
+		return principal.toString();
 	}
 	
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
 	public String showaddTodo(ModelMap model) {
-		model.addAttribute("todo", new Todo(0, (String) model.get("name"), "Please enter Description", new Date(), false));
+		model.addAttribute("todo", new Todo(0, getLoggedInUserName(model), "Please enter Description", new Date(), false));
 		return "todo";
 	}
 	
@@ -52,7 +62,7 @@ public class TodoController {
 		if (result.hasErrors()){
 			return "todo";
 		}
-		todoService.addTodo((String) model.get("name"), todo.getDesc(), todo.getTargetDate(), false);
+		todoService.addTodo(getLoggedInUserName(model), todo.getDesc(), todo.getTargetDate(), false);
 		return "redirect:/list-todo";
 	}
 	
@@ -74,7 +84,7 @@ public class TodoController {
 		if (result.hasErrors()) {
 			return "todo";
 		}		
-		todo.setUser((String) model.get("name"));		
+		todo.setUser(getLoggedInUserName(model));		
 		todoService.updateTodo(todo);
 		return "redirect:/list-todo";
 	}
