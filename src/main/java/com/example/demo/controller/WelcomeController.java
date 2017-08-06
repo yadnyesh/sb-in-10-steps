@@ -12,7 +12,7 @@ public class WelcomeController {
 	@Autowired
 	WelcomeService welcomeService;
 	
-	@Value("welcome.message")
+	@Value("${welcome.message}")
 	private String welcomeMessage;
 	
 	@RequestMapping("/welcome")
