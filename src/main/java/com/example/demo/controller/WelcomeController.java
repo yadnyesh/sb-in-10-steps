@@ -1,29 +1,26 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.RestController;
 
-
-@Controller
+@RestController
 public class WelcomeController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String showWelcomePage(ModelMap model) {
-		model.put("name", getLoggedinUserName());
-		return "welcome";
+	@Autowired
+	WelcomeService welcomeService;
+	
+	@RequestMapping("/welcome")
+	public String welcome() {
+		return welcomeService.retrieveMessage();
 	}
 	
-	private String getLoggedinUserName() {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if(principal instanceof UserDetails) {
-			return ((UserDetails) principal).getUsername();
+	@Component
+	public class WelcomeService {
+		public String retrieveMessage() {
+			return "This is great!";
 		}
-		return principal.toString();
 	}
+
 }
