@@ -80,7 +80,11 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap-datepicker</artifactId>
 			<version>1.0.1</version>
-		</dependency> 
+		</dependency>
+		<dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
 		
 		<!-- Spring Boot Security -->
 <!-- 		<dependency>
