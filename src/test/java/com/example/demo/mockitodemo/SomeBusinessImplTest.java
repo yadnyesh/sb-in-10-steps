@@ -1,5 +1,6 @@
 package com.example.demo.mockitodemo;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -14,8 +15,9 @@ public class SomeBusinessImplTest {
 		when(dataServicemock.retreiveAllData()).thenReturn(new int[] {25, 15, 6}); 
 		
 		
-		SomeBusinessImpl businessImpl  = new SomeBusinessImpl();
-		businessImpl.findTheGreatestFromAllData();
+		SomeBusinessImpl businessImpl  = new SomeBusinessImpl(dataServicemock);
+		int result = businessImpl.findTheGreatestFromAllData();
+		assertEquals(24, result);
 	}
 }
 

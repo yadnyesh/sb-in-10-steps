@@ -3,6 +3,10 @@ package com.example.demo.mockitodemo;
 public class SomeBusinessImpl {
 	private DataService dataService;
 	
+	public SomeBusinessImpl(DataService dataServicemock) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int findTheGreatestFromAllData() {
 		int[] data = dataService.retreiveAllData();
 		int greatest = Integer.MIN_VALUE;
