@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.example.demo.service.LoginService;
 
 @Controller
-@SessionAttributes("name")
 public class LoginController {
 	
 	@Autowired
