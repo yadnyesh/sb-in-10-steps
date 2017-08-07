@@ -11,10 +11,4 @@ public class SbIn10StepsApplication {
 	public static void main(String[] args) {
 				SpringApplication.run(SbIn10StepsApplication.class, args);
 	}
-	
-	@Profile("dev")
-	@Bean
-	public String dummy() {
-		return "something";
-	}
 }
